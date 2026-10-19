@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Application Received | Nine Eight Koncepts
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/careers/success.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="application-success">
+
+    <div class="application-success__grid"></div>
+
+    <div class="application-success__content">
+
+        <div class="application-success__icon">
+            ✓
+        </div>
+
+        <span>
+            APPLICATION RECEIVED
+        </span>
+
+        <h1>
+            Thanks for
+            <strong>applying.</strong>
+        </h1>
+
+        <p>
+            Your application has been successfully submitted.
+            If your experience matches what we're looking for,
+            we'll be in touch.
+        </p>
+
+        <a href="{% url 'careers:careers_list' %}">
+            BACK TO CAREERS
+            <span>↗</span>
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

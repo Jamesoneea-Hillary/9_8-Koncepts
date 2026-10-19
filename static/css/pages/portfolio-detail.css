@@ -1,0 +1,56 @@
+/* Project detail page theme: match the site's deep blue surfaces and accents. */
+.project-detail-hero{position:relative;isolation:isolate;min-height:62vh;padding:clamp(7rem,12vw,10rem) 0 4rem;overflow:hidden;background:radial-gradient(ellipse at 74% 42%,rgba(14,165,233,.2),transparent 42%),radial-gradient(ellipse at 22% 78%,rgba(37,99,235,.13),transparent 36%),#050b14;color:#f8fafc}
+.project-detail-hero::before{position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(148,163,184,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.045) 1px,transparent 1px);background-size:48px 48px;content:"";pointer-events:none;mask-image:linear-gradient(to bottom,transparent,black 15%,black 85%,transparent)}
+.project-detail-hero::after{position:absolute;right:0;bottom:0;left:0;height:1px;background:linear-gradient(90deg,transparent,rgba(56,189,248,.28),transparent);content:""}
+.project-detail-hero .container,.project-overview .container,.project-technologies .container,.project-gallery .container,.related-projects .container,.project-cta .container{position:relative;width:min(100% - 3rem,1400px);max-width:none;margin-inline:auto;padding-inline:0}
+.project-detail-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(2.5rem,6vw,6rem)}
+.project-detail-content .section-label,.project-description .section-label,.project-technologies .section-label,.project-gallery .section-label,.related-projects .section-label{display:inline-flex;align-items:center;gap:.65rem;color:#38bdf8;font-size:.66rem;font-weight:700;letter-spacing:.16em}
+.project-detail-content .section-label::before,.project-description .section-label::before,.project-technologies .section-label::before,.project-gallery .section-label::before,.related-projects .section-label::before{width:28px;height:1px;background:#38bdf8;content:""}
+.project-detail-content h1{margin:1.15rem 0;color:#f8fafc;font-size:clamp(2.8rem,5.4vw,5.5rem);font-weight:700;line-height:.98;letter-spacing:-.06em}
+.project-detail-content p{color:rgba(203,213,225,.66);font-size:1rem;line-height:1.8}
+.project-detail-image{min-height:0;aspect-ratio:16/10;border:1px solid rgba(148,163,184,.16);border-radius:20px;background:linear-gradient(145deg,#101d32,#0b1424);box-shadow:0 30px 85px rgba(0,0,0,.38)}
+.project-detail-image img{display:block;width:100%;height:100%;object-fit:cover}
+.project-detail-image::before{background:linear-gradient(145deg,rgba(37,99,235,.14),transparent 55%)}
+.project-overview{padding:clamp(4rem,7vw,7rem) 0;background:radial-gradient(ellipse at 10% 45%,rgba(37,99,235,.06),transparent 30%),#08101e;color:#f8fafc}
+.project-overview-grid{grid-template-columns:minmax(0,1.5fr) minmax(280px,.8fr);gap:clamp(2.5rem,7vw,7rem)}
+.project-description h2,.project-technologies .section-header h2,.project-gallery .section-header h2,.related-projects .section-header h2{margin:1rem 0 1.5rem;color:#f8fafc;font-size:clamp(2.2rem,4.5vw,4rem);font-weight:700;line-height:1;letter-spacing:-.055em}
+.project-description h2 span,.project-technologies .section-header h2 span,.project-gallery .section-header h2 span,.related-projects .section-header h2 span{background:linear-gradient(100deg,#38bdf8,#2563eb);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.project-description>div{color:rgba(203,213,225,.7);font-size:.98rem;line-height:1.9}
+.project-description>div p{margin:0 0 1.25rem}
+.project-meta{padding:1.5rem 1.75rem;border:1px solid rgba(148,163,184,.15);border-radius:18px;background:linear-gradient(145deg,rgba(15,23,42,.94),rgba(8,16,30,.96));box-shadow:0 20px 55px rgba(0,0,0,.18)}
+.project-meta .meta-item{padding:1rem 0;border-color:rgba(148,163,184,.13)}
+.project-meta .meta-item span{color:#38bdf8;font-size:.62rem;letter-spacing:.14em}
+.project-meta .meta-item strong{color:#e2e8f0;font-size:.92rem;font-weight:600}
+.project-technologies{padding:clamp(4rem,7vw,6rem) 0;background:linear-gradient(180deg,#0a1424,#08101e);color:#f8fafc}
+.project-technologies .section-header,.project-gallery .section-header,.related-projects .section-header{margin-bottom:2rem}
+.project-technologies-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:.9rem;margin-top:2rem}
+.project-tech-card{min-height:130px;gap:.8rem;border:1px solid rgba(148,163,184,.14);border-radius:15px;background:linear-gradient(145deg,rgba(15,23,42,.92),rgba(8,16,30,.94));color:#e2e8f0;transition:transform .3s ease,border-color .3s ease,background .3s ease,box-shadow .3s ease}
+.project-tech-card:hover{transform:translateY(-4px);border-color:rgba(56,189,248,.3);background:linear-gradient(145deg,rgba(20,36,60,.96),rgba(8,16,30,.96));box-shadow:0 18px 45px rgba(0,0,0,.2)}
+.project-tech-card i{color:#38bdf8}
+.project-tech-card img{width:42px;height:42px;object-fit:contain}
+.project-tech-card span{color:rgba(226,232,240,.8);font-size:.82rem}
+.project-gallery{padding:clamp(4rem,7vw,6rem) 0;background:#08101e;color:#f8fafc}
+.project-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:2rem}
+.project-gallery figure{border:1px solid rgba(148,163,184,.14);border-radius:16px;background:linear-gradient(145deg,rgba(15,23,42,.92),rgba(8,16,30,.95));box-shadow:0 18px 45px rgba(0,0,0,.16)}
+.project-gallery figure img{aspect-ratio:16/10;object-fit:cover}
+.project-gallery figcaption{padding:.85rem 1rem;color:rgba(203,213,225,.62);font-size:.78rem}
+.related-projects{padding:clamp(4rem,7vw,6rem) 0;border-top:1px solid rgba(148,163,184,.12);background:radial-gradient(ellipse at 85% 40%,rgba(37,99,235,.07),transparent 34%),#08101e;color:#f8fafc}
+.related-projects .portfolio-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.related-projects .portfolio-card{overflow:hidden;border:1px solid rgba(148,163,184,.14);border-radius:16px;background:linear-gradient(145deg,rgba(15,23,42,.95),rgba(8,16,30,.97));transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
+.related-projects .portfolio-card:hover{transform:translateY(-4px);border-color:rgba(56,189,248,.28);box-shadow:0 22px 55px rgba(0,0,0,.25)}
+.related-projects .portfolio-image{position:relative;aspect-ratio:16/10;overflow:hidden;background:#0b1424}
+.related-projects .portfolio-image img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.related-projects .portfolio-card:hover .portfolio-image img{transform:scale(1.04)}
+.related-projects .portfolio-content{padding:1rem 1.1rem}
+.related-projects .portfolio-category{color:#38bdf8;font-size:.64rem}
+.related-projects .portfolio-content h3{margin:.65rem 0;color:#f8fafc;font-size:1.05rem}
+.related-projects .portfolio-content p{color:rgba(203,213,225,.62);font-size:.8rem;line-height:1.7}
+.project-cta{padding:clamp(3.5rem,7vw,6rem) 0;background:#08101e}
+.project-cta-content{position:relative;overflow:hidden;padding:clamp(2.5rem,6vw,5rem) 2rem;border:1px solid rgba(56,189,248,.18);border-radius:20px;background:radial-gradient(ellipse at 80% 20%,rgba(37,99,235,.2),transparent 42%),linear-gradient(145deg,#0c192c,#08101e);box-shadow:0 24px 60px rgba(0,0,0,.22)}
+.project-cta-content>span{color:#38bdf8;font-size:.66rem;font-weight:700;letter-spacing:.16em}
+.project-cta-content h2{color:#f8fafc;font-size:clamp(2.2rem,4.8vw,4.2rem);font-weight:700;line-height:1;letter-spacing:-.055em}
+.project-cta-content h2 span{background:linear-gradient(100deg,#38bdf8,#2563eb);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.project-cta-content p{color:rgba(203,213,225,.62)}
+@media(max-width:1000px){.project-detail-grid{grid-template-columns:1fr;gap:2rem}.project-detail-image{max-height:560px}.project-overview-grid{grid-template-columns:1fr;gap:2rem}.project-technologies-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.related-projects .portfolio-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.project-detail-hero{min-height:auto;padding:6rem 0 3.5rem}.project-detail-hero .container,.project-overview .container,.project-technologies .container,.project-gallery .container,.related-projects .container,.project-cta .container{width:min(100% - 2rem,680px)}.project-detail-content h1{font-size:clamp(2.5rem,11vw,4rem)}.project-detail-image{border-radius:14px}.project-overview{padding:3.5rem 0}.project-meta{padding:1.1rem 1.25rem}.project-technologies,.project-gallery,.related-projects{padding:3.5rem 0}.project-technologies-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem}.project-tech-card{min-height:110px}.project-gallery-grid,.related-projects .portfolio-grid{grid-template-columns:1fr;gap:.85rem}.related-projects .portfolio-card{max-width:560px;width:100%;margin-inline:auto}.project-cta{padding:3.5rem 0}.project-cta-content{padding:2.5rem 1.25rem;border-radius:16px}}
+@media(prefers-reduced-motion:reduce){.project-tech-card,.related-projects .portfolio-card,.related-projects .portfolio-image img{transition:none}}

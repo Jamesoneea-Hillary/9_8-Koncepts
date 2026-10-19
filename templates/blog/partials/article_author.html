@@ -1,0 +1,53 @@
+<section class="article-author-section">
+
+    <div class="container">
+
+        <div class="article-author-card">
+
+            <div class="author-card-avatar">
+
+                {% if post.author.profile_picture %}
+
+                    <img
+                        src="{{ post.author.profile_picture.url }}"
+                        alt=""
+                    >
+
+                {% else %}
+
+                    {{ post.author.username|slice:":1"|upper }}
+
+                {% endif %}
+
+            </div>
+
+
+            <div class="author-card-content">
+
+                <span class="author-label">
+                    ABOUT THE AUTHOR
+                </span>
+
+
+                <h3>
+
+                    {{ post.author.username|default:"Nine Eight Koncepts" }}
+
+                </h3>
+
+
+                <p>
+
+                    Sharing practical ideas, insights and perspectives
+                    on software engineering, technology and digital
+                    innovation.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

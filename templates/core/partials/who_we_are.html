@@ -1,0 +1,192 @@
+{% load static %}
+
+<section class="who-we-are" id="about">
+    <div class="who-we-are__grid"></div>
+
+    <div class="who-we-are__glow who-we-are__glow--one"></div>
+    <div class="who-we-are__glow who-we-are__glow--two"></div>
+
+    <div class="who-we-are__container">
+
+        <!-- LEFT CONTENT -->
+        <div class="who-we-are__content">
+            <h2 class="who-we-are__title">
+                Engineering software
+                <span>that moves businesses forward.</span>
+            </h2>
+
+            <p class="who-we-are__description">
+                Nine Eight Koncepts is a software engineering company
+                dedicated to building innovative digital solutions that
+                help businesses grow, automate operations, and deliver
+                exceptional customer experiences.
+            </p>
+
+            <p class="who-we-are__description who-we-are__description--secondary">
+                From premium websites and mobile applications to custom
+                software and long-term technical support, we engineer
+                technology around the realities of modern businesses.
+            </p>
+
+            <div class="who-we-are__actions">
+                <a href="{% url 'core:about' %}" class="who-btn who-btn--primary">
+                    <span>Discover Our Story</span>
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
+
+                <a href="{% url 'contact:contact' %}" class="who-btn who-btn--secondary">
+                    <span>Work With Us</span>
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT ENGINEERING SYSTEM -->
+        <div class="who-we-are__visual">
+
+            <div class="section-eyebrow who-we-are__eyebrow">
+                <span class="section-eyebrow__line"></span>
+                <span>WHO WE ARE</span>
+            </div>
+
+            <div class="engineering-system">
+
+                <!-- Ambient glow -->
+                <div class="engineering-system__glow"></div>
+
+                <!-- Decorative orbit -->
+                <div class="engineering-system__orbit engineering-system__orbit--one"></div>
+                <div class="engineering-system__orbit engineering-system__orbit--two"></div>
+
+                <!-- Connection lines -->
+                <div class="engineering-line engineering-line--one"></div>
+                <div class="engineering-line engineering-line--two"></div>
+                <div class="engineering-line engineering-line--three"></div>
+                <div class="engineering-line engineering-line--four"></div>
+
+                <!-- CENTRAL CORE -->
+                <div class="engineering-core">
+                    <div class="engineering-core__ring"></div>
+
+                    <div class="engineering-core__logo">
+                        <img
+                            src="{% static 'images/logo/logo.jpg' %}"
+                            alt="Nine Eight Koncepts">
+                    </div>
+
+                    <div class="engineering-core__label">
+                        <span>ENGINEERING CORE</span>
+                        <small>Digital Systems</small>
+                    </div>
+                </div>
+
+
+                <!-- WEB -->
+                <div class="engineering-node engineering-node--web">
+
+                    <div class="engineering-node__icon">
+                        <i class="bi bi-window-stack"></i>
+                    </div>
+
+                    <div class="engineering-node__content">
+                        <span>01</span>
+                        <strong>Web</strong>
+                        <small>Experiences</small>
+                    </div>
+
+                    <div class="engineering-node__status"></div>
+
+                </div>
+
+
+                <!-- MOBILE -->
+                <div class="engineering-node engineering-node--mobile">
+
+                    <div class="engineering-node__icon">
+                        <i class="bi bi-phone"></i>
+                    </div>
+
+                    <div class="engineering-node__content">
+                        <span>02</span>
+                        <strong>Mobile</strong>
+                        <small>Products</small>
+                    </div>
+
+                    <div class="engineering-node__status"></div>
+
+                </div>
+
+
+                <!-- SOFTWARE -->
+                <div class="engineering-node engineering-node--software">
+
+                    <div class="engineering-node__icon">
+                        <i class="bi bi-code-slash"></i>
+                    </div>
+
+                    <div class="engineering-node__content">
+                        <span>03</span>
+                        <strong>Software</strong>
+                        <small>Systems</small>
+                    </div>
+
+                    <div class="engineering-node__status"></div>
+
+                </div>
+
+
+                <!-- CLOUD -->
+                <div class="engineering-node engineering-node--cloud">
+
+                    <div class="engineering-node__icon">
+                        <i class="bi bi-cloud"></i>
+                    </div>
+
+                    <div class="engineering-node__content">
+                        <span>04</span>
+                        <strong>Cloud</strong>
+                        <small>Infrastructure</small>
+                    </div>
+
+                    <div class="engineering-node__status"></div>
+
+                </div>
+
+
+                <!-- FLOATING LABELS -->
+
+                <div class="engineering-float engineering-float--top">
+                    <i class="bi bi-cpu"></i>
+
+                    <div>
+                        <small>ENGINEERED FOR</small>
+                        <strong>Performance</strong>
+                    </div>
+                </div>
+
+
+                <div class="engineering-float engineering-float--bottom">
+                    <i class="bi bi-shield-check"></i>
+
+                    <div>
+                        <small>BUILT FOR</small>
+                        <strong>Scalability</strong>
+                    </div>
+                </div>
+
+
+                <!-- Decorative dots -->
+                <span class="system-dot system-dot--one"></span>
+                <span class="system-dot system-dot--two"></span>
+                <span class="system-dot system-dot--three"></span>
+                <span class="system-dot system-dot--four"></span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

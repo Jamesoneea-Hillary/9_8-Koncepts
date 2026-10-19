@@ -1,0 +1,55 @@
+{% load static %}
+<div class="koncepts-chat" data-endpoint="{% url 'core:chatbot_reply' %}" data-inquiry-endpoint="{% url 'core:assistant_inquiry' %}" data-whatsapp="{{ assistant_whatsapp|default:'' }}">
+    <button class="koncepts-chat__launcher" type="button" aria-controls="koncepts-chat-panel" aria-expanded="false" aria-label="Open chat with Nine Eight Koncepts">
+        <i class="bi bi-chat-dots-fill" aria-hidden="true"></i>
+        <span>Chat with us</span>
+    </button>
+
+    <section class="koncepts-chat__panel" id="koncepts-chat-panel" aria-label="Nine Eight Koncepts customer assistant" hidden>
+        <header class="koncepts-chat__header">
+            <div class="koncepts-chat__brand-icon"><i class="bi bi-stars" aria-hidden="true"></i></div>
+            <div class="koncepts-chat__heading">
+                    <strong>Nine Eight Assistant</strong>
+                <span><i aria-hidden="true"></i> Customer assistant</span>
+            </div>
+            <button class="koncepts-chat__close" type="button" aria-label="Close chat"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+        </header>
+
+        <div class="koncepts-chat__messages" role="log" aria-live="polite" aria-relevant="additions text">
+            <div class="koncepts-chat__message koncepts-chat__message--bot">
+                Hi! I’m Nine Eight Assistant. I can help you explore services, projects, and next steps. What are you hoping to build?
+            </div>
+        </div>
+
+        <div class="koncepts-chat__suggestions" aria-label="Suggested questions">
+            <button type="button" data-message="What services do you offer?">Our services</button>
+            <button type="button" data-message="How much does a project cost?">Project costs</button>
+        </div>
+
+        <div class="koncepts-chat__actions">
+            <button type="button" data-show-inquiry>Share a project brief</button>
+            <a href="{% url 'contact:contact' %}">Contact page</a>
+            <button type="button" data-whatsapp hidden>Continue on WhatsApp</button>
+        </div>
+        <form class="koncepts-chat__inquiry" hidden>
+            <label>Full name<input name="full_name" autocomplete="name" maxlength="150" required></label>
+            <label>Email<input name="email" type="email" autocomplete="email" maxlength="254" required></label>
+            <label>Phone or WhatsApp <span>(optional)</span><input name="phone" type="tel" autocomplete="tel" maxlength="30"></label>
+            <label>Company <span>(optional)</span><input name="company" maxlength="150"></label>
+            <label>Service<select name="service" required><option value="">Choose a service</option><option value="website">Website Design &amp; Development</option><option value="web_app">Web Application Development</option><option value="mobile_app">Mobile Application Development</option><option value="software">Custom Software Development</option><option value="maintenance">Website &amp; Software Maintenance</option><option value="consultation">Software Consultation</option><option value="other">Other</option></select></label>
+            <label>Budget <span>(optional)</span><select name="budget"><option value="">Not specified</option><option value="below_1m">Below UGX 1,000,000</option><option value="1m_3m">UGX 1,000,000 - 3,000,000</option><option value="3m_5m">UGX 3,000,000 - 5,000,000</option><option value="5m_10m">UGX 5,000,000 - 10,000,000</option><option value="above_10m">Above UGX 10,000,000</option><option value="not_sure">Not sure yet</option></select></label>
+            <label>Project description<textarea name="message" rows="3" maxlength="5000" required placeholder="What problem would you like to solve?"></textarea></label>
+            <label class="koncepts-chat__consent"><input type="checkbox" name="consent" required> I agree that Nine Eight Koncepts may use these details to respond to my inquiry.</label>
+            <button type="submit">Submit project inquiry</button>
+            <p class="koncepts-chat__inquiry-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <form class="koncepts-chat__form">
+            {% csrf_token %}
+            <label class="visually-hidden" for="koncepts-chat-input">Your message</label>
+            <input id="koncepts-chat-input" name="message" type="text" maxlength="500" placeholder="Write a message..." autocomplete="off" required>
+            <button type="submit" aria-label="Send message"><i class="bi bi-arrow-up" aria-hidden="true"></i></button>
+        </form>
+        <p class="koncepts-chat__note">For a detailed project enquiry, use our <a href="{% url 'contact:contact' %}">contact form</a>.</p>
+    </section>
+</div>

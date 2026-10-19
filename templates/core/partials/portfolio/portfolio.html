@@ -1,0 +1,203 @@
+<!-- =====================================================
+     SELECTED WORK
+     ===================================================== -->
+
+<section class="selected-work" id="work">
+
+    <div class="selected-work__grid"></div>
+
+    <div class="selected-work__glow selected-work__glow--one"></div>
+    <div class="selected-work__glow selected-work__glow--two"></div>
+
+
+    <div class="selected-work__container">
+
+        <!-- HEADER -->
+        <header class="selected-work__header">
+
+            <div class="selected-work__heading">
+
+                <div class="section-eyebrow">
+                    <span class="section-eyebrow__line"></span>
+                    <span>OUR WORK</span>
+                </div>
+
+                <h2 class="selected-work__title">
+                    Ideas built into
+                    <span>digital experiences.</span>
+                </h2>
+
+            </div>
+
+
+            <div class="selected-work__intro">
+
+                <span class="selected-work__intro-label">
+                    SELECTED PROJECTS
+                </span>
+
+                <p>
+                    Explore a selection of digital products designed
+                    and engineered by Nine Eight Koncepts.
+                </p>
+
+                <a
+                    href="{% url 'portfolio:portfolio_list' %}"
+                    class="selected-work__explore"
+                >
+                    <span>Explore all work</span>
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
+
+            </div>
+
+        </header>
+
+
+        {% if featured_projects %}
+
+        <!-- PROJECT SHOWCASE -->
+        <div class="selected-work__showcase">
+
+            {% for project in featured_projects %}
+
+                <article
+                    class="
+                        work-project
+                        {% if forloop.first %}
+                            work-project--featured
+                        {% endif %}
+                    "
+                >
+
+                    <!-- PROJECT IMAGE -->
+                    <div class="work-project__media">
+
+                        {% if project.featured_image %}
+
+                            <img
+                                src="{{ project.featured_image.url }}"
+                                alt="{{ project.title }}"
+                                loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                            >
+
+                        {% endif %}
+
+
+                        <div class="work-project__overlay"></div>
+
+
+                        <!-- NUMBER -->
+                        <span class="work-project__number">
+                            {% if forloop.counter < 10 %}
+                                0{{ forloop.counter }}
+                            {% else %}
+                                {{ forloop.counter }}
+                            {% endif %}
+                        </span>
+
+
+                        <!-- TOP RIGHT -->
+                        <span class="work-project__category">
+
+                            {% if project.category %}
+                                {{ project.category.name }}
+                            {% else %}
+                                DIGITAL PRODUCT
+                            {% endif %}
+
+                        </span>
+
+
+                        <!-- VIEW -->
+                        <a
+                            href="{% url 'portfolio:portfolio_detail' project.slug %}"
+                            class="work-project__view"
+                            aria-label="View {{ project.title }}"
+                        >
+                            <i class="bi bi-arrow-up-right"></i>
+                        </a>
+
+                    </div>
+
+
+                    <!-- PROJECT INFORMATION -->
+                    <div class="work-project__body">
+
+                        <div class="work-project__meta">
+
+                            {% if project.status %}
+
+                                <span class="work-project__status">
+                                    <i></i>
+                                    {{ project.get_status_display }}
+                                </span>
+
+                            {% endif %}
+
+                            {% if project.client %}
+
+                                <span class="work-project__client">
+                                    {{ project.client }}
+                                </span>
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <h3 class="work-project__title">
+                            {{ project.title }}
+                        </h3>
+
+
+                        <p class="work-project__description">
+                            {{ project.short_description }}
+                        </p>
+
+
+                        {% with technologies=project.technologies.all %}
+
+                            {% if technologies %}
+
+                                <div class="work-project__technologies">
+
+                                    {% for technology in technologies|slice:":4" %}
+
+                                        <span>
+                                            {{ technology.name }}
+                                        </span>
+
+                                    {% endfor %}
+
+                                </div>
+
+                            {% endif %}
+
+                        {% endwith %}
+
+
+                        <a
+                            href="{% url 'portfolio:portfolio_detail' project.slug %}"
+                            class="work-project__case-study"
+                        >
+                            <span>View Case Study</span>
+
+                            <span class="work-project__case-study-icon">
+                                <i class="bi bi-arrow-right"></i>
+                            </span>
+                        </a>
+
+                    </div>
+
+                </article>
+
+            {% endfor %}
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</section>

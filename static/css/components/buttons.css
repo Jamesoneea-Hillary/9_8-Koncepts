@@ -1,0 +1,17 @@
+.btn-primary{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:15px 28px;
+    border-radius:50px;
+    background:var(--gradient-primary);
+    color:white;
+    font-weight:600;
+    transition:.35s;
+    box-shadow:0 12px 25px rgba(34,211,238,.25);
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 18px 40px rgba(34,211,238,.4);
+}

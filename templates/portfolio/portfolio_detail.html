@@ -1,0 +1,570 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block title %}
+
+{{ project.title }} | Nine Eight Koncepts
+
+{% endblock %}
+
+
+{% block extra_css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'css/pages/portfolio.css' %}"
+>
+
+<link
+    rel="stylesheet"
+    href="{% static 'css/pages/portfolio-detail.css' %}"
+>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<!-- PROJECT HERO -->
+
+<section class="project-detail-hero">
+
+    <div class="container">
+
+        <div class="project-detail-grid">
+
+
+            <!-- CONTENT -->
+
+            <div class="project-detail-content">
+
+
+                {% if project.category %}
+
+                    <span class="section-label">
+
+                        {{ project.category.name }}
+
+                    </span>
+
+                {% endif %}
+
+
+                <h1>
+
+                    {{ project.title }}
+
+                </h1>
+
+
+                <p>
+
+                    {{ project.short_description }}
+
+                </p>
+
+
+                <div class="project-actions">
+
+
+                    {% if project.project_url %}
+
+                        <a
+                            href="{{ project.project_url }}"
+                            target="_blank"
+                            class="btn btn-primary"
+                        >
+
+                            Visit Project
+
+                            <i class="bi bi-arrow-up-right"></i>
+
+                        </a>
+
+                    {% endif %}
+
+
+                    {% if project.github_url %}
+
+                        <a
+                            href="{{ project.github_url }}"
+                            target="_blank"
+                            class="btn btn-outline"
+                        >
+
+                            <i class="bi bi-github"></i>
+
+                            View Code
+
+                        </a>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+
+            <!-- IMAGE -->
+
+            <div class="project-detail-image">
+
+                <img
+                    src="{{ project.featured_image.url }}"
+                    alt="{{ project.title }}"
+                >
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECT INFO -->
+
+<section class="project-overview">
+
+    <div class="container">
+
+
+        <div class="project-overview-grid">
+
+
+            <!-- DESCRIPTION -->
+
+            <div class="project-description">
+
+                <span class="section-label">
+
+                    PROJECT OVERVIEW
+
+                </span>
+
+
+                <h2>
+
+                    Built To Create
+
+                    <span>
+                        Real Impact
+                    </span>
+
+                </h2>
+
+
+                <div>
+
+                    {{ project.description|linebreaks }}
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT INFO -->
+
+            <aside class="project-meta">
+
+
+                {% if project.client %}
+
+                    <div class="meta-item">
+
+                        <span>
+
+                            CLIENT
+
+                        </span>
+
+                        <strong>
+
+                            {{ project.client }}
+
+                        </strong>
+
+                    </div>
+
+                {% endif %}
+
+
+                <div class="meta-item">
+
+                    <span>
+
+                        STATUS
+
+                    </span>
+
+                    <strong>
+
+                        {{ project.get_status_display }}
+
+                    </strong>
+
+                </div>
+
+
+                {% if project.category %}
+
+                    <div class="meta-item">
+
+                        <span>
+
+                            CATEGORY
+
+                        </span>
+
+                        <strong>
+
+                            {{ project.category.name }}
+
+                        </strong>
+
+                    </div>
+
+                {% endif %}
+
+
+                <div class="meta-item">
+
+                    <span>
+
+                        COMPLETED
+
+                    </span>
+
+                    <strong>
+
+                        {{ project.created_at|date:"Y" }}
+
+                    </strong>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TECHNOLOGIES -->
+
+{% if project.technologies.all %}
+
+<section class="project-technologies">
+
+    <div class="container">
+
+
+        <div class="section-header">
+
+            <span class="section-label">
+
+                TECHNOLOGIES
+
+            </span>
+
+
+            <h2>
+
+                Built With
+
+                <span>
+                    Modern Technology
+                </span>
+
+            </h2>
+
+        </div>
+
+
+        <div class="project-technologies-grid">
+
+            {% for technology in project.technologies.all %}
+
+                <div class="project-tech-card">
+
+
+                    {% if technology.logo %}
+
+                        <img
+                            src="{{ technology.logo.url }}"
+                            alt="{{ technology.name }}"
+                        >
+
+                    {% elif technology.icon %}
+
+                        <i
+                            class="{{ technology.icon }}"
+                        ></i>
+
+                    {% endif %}
+
+
+                    <span>
+
+                        {{ technology.name }}
+
+                    </span>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endif %}
+
+
+<!-- PROJECT GALLERY -->
+
+{% if project.images.all %}
+
+<section class="project-gallery">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <span class="section-label">
+
+                PROJECT GALLERY
+
+            </span>
+
+            <h2>
+
+                A closer look at
+                <span>
+
+                    the experience.
+
+                </span>
+
+            </h2>
+
+        </div>
+
+
+        <div class="project-gallery-grid">
+
+            {% for image in project.images.all %}
+
+            <figure
+                class="
+                    reveal
+                    magnetic-card
+                "
+            >
+
+                <img
+                    src="{{ image.image.url }}"
+                    alt="{{ image.caption|default:project.title }}"
+                    class="lightbox-image"
+                >
+
+
+                {% if image.caption %}
+
+                <figcaption>
+
+                    {{ image.caption }}
+
+                </figcaption>
+
+                {% endif %}
+
+            </figure>
+
+            {% empty %}
+
+            <p>
+
+                No additional screenshots available yet.
+
+            </p>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endif %}
+
+
+<!-- RELATED PROJECTS -->
+
+{% if related_projects %}
+
+<section class="related-projects">
+
+    <div class="container">
+
+
+        <div class="section-header">
+
+            <span class="section-label">
+
+                MORE PROJECTS
+
+            </span>
+
+
+            <h2>
+
+                Explore More Of
+
+                <span>
+                    Our Work
+                </span>
+
+            </h2>
+
+        </div>
+
+
+        <div class="portfolio-grid">
+
+            {% for related in related_projects %}
+
+                <article class="portfolio-card">
+
+                    <div class="portfolio-image">
+
+                        <img
+                            src="{{ related.featured_image.url }}"
+                            alt="{{ related.title }}"
+                        >
+
+                        <div class="portfolio-overlay">
+
+                            <a
+                                href="{% url 'portfolio:portfolio_detail' related.slug %}"
+                                class="portfolio-view"
+                            >
+
+                                <i class="bi bi-arrow-up-right"></i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="portfolio-content">
+
+                        <span class="portfolio-category">
+
+                            {{ related.category.name }}
+
+                        </span>
+
+
+                        <h3>
+
+                            {{ related.title }}
+
+                        </h3>
+
+
+                        <p>
+
+                            {{ related.short_description }}
+
+                        </p>
+
+                    </div>
+
+                </article>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endif %}
+
+
+<!-- CTA -->
+
+<section class="project-cta">
+
+    <div class="container">
+
+        <div class="project-cta-content">
+
+            <span>
+
+                HAVE A PROJECT IN MIND?
+
+            </span>
+
+
+            <h2>
+
+                Let's Build Something
+
+                <span>
+                    Remarkable Together
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Have an idea, challenge or digital
+                project in mind?
+
+                Let's turn it into something
+                people will remember.
+
+            </p>
+
+
+            <a
+                href="#"
+                class="btn btn-primary"
+            >
+
+                Start Your Project
+
+                <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% block extra_js %}
+
+<script
+    src="{% static 'js/portfolio.js' %}"
+></script>
+
+{% endblock %}
+
+{% endblock %}

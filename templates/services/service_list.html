@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block title %}
+
+Our Services | Nine Eight Koncepts
+
+{% endblock %}
+
+{% block extra_css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'css/pages/services.css' %}">
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="services-page-hero">
+
+    <div class="services-page-hero__grid"></div>
+    <div class="services-page-hero__glow services-page-hero__glow--one"></div>
+    <div class="services-page-hero__glow services-page-hero__glow--two"></div>
+
+    <div class="services-page-hero__container">
+        <div class="services-page-intro">
+            <div class="services-page-hero__label">
+                <span></span>
+                OUR SERVICES
+            </div>
+
+            <h1>
+                Digital solutions
+                <span>built for ambition.</span>
+            </h1>
+
+            <p>
+                We combine strategy, creativity and engineering
+                to create digital solutions that help businesses
+                grow, operate efficiently and compete confidently.
+            </p>
+        </div>
+    </div>
+
+    <div class="services-page-hero__rule"></div>
+
+</section>
+
+
+
+<section class="services-page-list">
+
+    <div class="container">
+
+        <div class="services-grid services-page-list__grid">
+
+            {% for service in services %}
+
+                <article class="service-card">
+
+                    <div class="service-icon">
+                        {% if service.icon %}
+                            <i class="bi {{ service.icon }}" aria-hidden="true"></i>
+                        {% else %}
+                            <i class="bi bi-code-slash" aria-hidden="true"></i>
+                        {% endif %}
+
+                    </div>
+
+
+                    <h2 class="services-page-list__title">
+
+                        {{ service.title }}
+
+                    </h2>
+
+
+                    <p>
+
+                        {{ service.short_description }}
+
+                    </p>
+
+
+                    <a
+                        href="{% url 'services:service_detail' service.slug %}"
+                        class="service-link"
+                    >
+
+                        Explore Service
+
+                        <i class="bi bi-arrow-up-right"></i>
+
+                    </a>
+
+                </article>
+
+                {% empty %}
+
+                    <div class="services-page-list__empty">
+                        <span class="services-page-list__empty-icon"><i class="bi bi-grid-1x2" aria-hidden="true"></i></span>
+                        <h2>Services are on the way</h2>
+                        <p>Our service offerings will appear here soon. Get in touch and tell us what you are looking to build.</p>
+                        <a href="{% url 'contact:contact' %}" class="services-page-list__empty-link">
+                            Talk to our team <i class="bi bi-arrow-up-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+
+{% endblock %}

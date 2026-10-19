@@ -1,0 +1,43 @@
+{% if partners %}
+<section class="home-partners" aria-labelledby="home-partners-title">
+    <div class="home-partners__container">
+        <div class="home-partners__intro">
+            <span class="home-partners__eyebrow">OUR PARTNERS</span>
+            <h2 id="home-partners-title">Building better, <span>together.</span></h2>
+            <p>We work alongside trusted organizations to create meaningful digital experiences.</p>
+        </div>
+
+        <div class="home-partners__marquee" role="region" aria-label="Our partners">
+            <div class="home-partners__track">
+                <div class="home-partners__group">
+                    {% for partner in partners %}
+                        <div class="home-partners__logo">
+                            {% if partner.website %}
+                                <a href="{{ partner.website }}" target="_blank" rel="noopener noreferrer" aria-label="{{ partner.name }} website">
+                            {% endif %}
+                            <img src="{{ partner.logo.url }}" alt="{{ partner.name }}" loading="lazy" decoding="async">
+                            {% if partner.website %}
+                                </a>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="home-partners__group" aria-hidden="true">
+                    {% for partner in partners %}
+                        <div class="home-partners__logo">
+                            {% if partner.website %}
+                                <a href="{{ partner.website }}" tabindex="-1">
+                            {% endif %}
+                            <img src="{{ partner.logo.url }}" alt="" loading="lazy" decoding="async">
+                            {% if partner.website %}
+                                </a>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}

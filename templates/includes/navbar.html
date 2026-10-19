@@ -1,0 +1,65 @@
+{% load static %}
+<header class="header" id="header">
+    <div class="container">
+        <nav class="navbar">
+            <a href="{% url 'core:home' %}" class="logo">
+                {% if site_settings and site_settings.logo %}
+                    <img
+                        src="{{ site_settings.logo.url }}"
+                        alt="{{ site_settings.company_name }}">
+                {% else %}
+                    <span>NINE EIGHT Koncepts</span>
+                {% endif %}
+            </a>
+
+            <!-- Desktop Navigation -->
+            <ul class="nav-links">
+                <li><a href="{% url 'core:home' %}"{% if request.resolver_match.namespace == 'core' and request.resolver_match.url_name == 'home' %} class="active"{% endif %}><i class="bi bi-house-door" aria-hidden="true"></i>Home</a></li>
+                <li><a href="{% url 'core:about' %}"{% if request.resolver_match.namespace == 'core' and request.resolver_match.url_name == 'about' %} class="active"{% endif %}><i class="bi bi-building" aria-hidden="true"></i>About</a></li>
+                <li><a href="{% url 'services:service_list' %}"{% if request.resolver_match.namespace == 'services' %} class="active"{% endif %}><i class="bi bi-grid-1x2" aria-hidden="true"></i>Services</a></li>
+                <li><a href="{% url 'portfolio:portfolio_list' %}"{% if request.resolver_match.namespace == 'portfolio' %} class="active"{% endif %}><i class="bi bi-briefcase" aria-hidden="true"></i>Portfolio</a></li>
+                <li><a href="{% url 'blog:blog_list' %}"{% if request.resolver_match.namespace == 'blog' %} class="active"{% endif %}><i class="bi bi-journal-text" aria-hidden="true"></i>Blog</a></li>
+                <li><a href="{% url 'careers:careers_list' %}"{% if request.resolver_match.namespace == 'careers' %} class="active"{% endif %}><i class="bi bi-person-badge" aria-hidden="true"></i>Careers</a></li>
+                <li><a href="{% url 'contact:contact' %}"{% if request.resolver_match.namespace == 'contact' %} class="active"{% endif %}><i class="bi bi-envelope" aria-hidden="true"></i>Contact</a></li>
+            </ul>
+            <a href="{% url 'contact:contact' %}" class="btn-primary desktop-btn">
+                Start Project <i class="bi bi-arrow-up-right" aria-hidden="true"></i>
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button
+                id="menuToggle"
+                class="menu-toggle"
+                type="button"
+                aria-label="Open navigation menu"
+                aria-controls="mobileMenu"
+                aria-expanded="false">
+                <i class="bi bi-list"></i>
+            </button>
+        </nav>
+    </div>
+</header>
+
+<!-- Overlay -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<!-- Mobile Menu -->
+<aside class="mobile-menu" id="mobileMenu">
+    <div class="mobile-header">
+        <button id="closeMenu" type="button" aria-label="Close navigation menu">
+            <i class="bi bi-x-lg"></i>
+        </button>
+    </div>
+
+    <ul>
+        <li><a href="{% url 'core:home' %}"><i class="bi bi-house-door" aria-hidden="true"></i>Home</a></li>
+        <li><a href="{% url 'core:about' %}"><i class="bi bi-building" aria-hidden="true"></i>About</a></li>
+        <li><a href="{% url 'services:service_list' %}"><i class="bi bi-grid-1x2" aria-hidden="true"></i>Services</a></li>
+        <li><a href="{% url 'portfolio:portfolio_list' %}"><i class="bi bi-briefcase" aria-hidden="true"></i>Portfolio</a></li>
+        <li><a href="{% url 'blog:blog_list' %}"><i class="bi bi-journal-text" aria-hidden="true"></i>Blog</a></li>
+        <li><a href="{% url 'careers:careers_list' %}"><i class="bi bi-person-badge" aria-hidden="true"></i>Careers</a></li>
+        <li><a href="{% url 'contact:contact' %}"><i class="bi bi-envelope" aria-hidden="true"></i>Contact</a></li>
+    </ul>
+    <a href="{% url 'contact:contact' %}" class="btn-primary">
+        Start Project <i class="bi bi-arrow-up-right" aria-hidden="true"></i>
+    </a>
+</aside>

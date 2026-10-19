@@ -1,0 +1,33 @@
+{% if featured_jobs %}
+
+<section class="careers-featured">
+
+    <div class="careers-section-heading">
+
+        <span>FEATURED OPPORTUNITIES</span>
+
+        <h2>
+            Find your next
+            <strong>challenge.</strong>
+        </h2>
+
+        <p>
+            Join a team where ideas become products and
+            technology creates real-world impact.
+        </p>
+
+    </div>
+
+    <div class="careers-featured__grid">
+
+        {% for job in featured_jobs %}
+
+            {% include "careers/partials/job_card.html" with job=job %}
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endif %}

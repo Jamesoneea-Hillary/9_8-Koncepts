@@ -1,0 +1,113 @@
+{% if related_posts %}
+
+<section class="related-posts">
+
+    <div class="container">
+
+        <div class="related-heading">
+
+            <div>
+
+                <span class="section-label">
+
+                    KEEP EXPLORING
+
+                </span>
+
+
+                <h2>
+
+                    More From
+
+                    <span>
+                        Our Journal.
+                    </span>
+
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="related-grid">
+
+            {% for related in related_posts %}
+
+            <article class="related-card">
+
+                <a
+                    href="{% url 'blog:blog_detail' related.slug %}"
+                    class="related-image"
+                >
+
+                    {% if related.featured_image %}
+
+                    <img
+                        src="{{ related.featured_image.url }}"
+                        alt="{{ related.title }}"
+                    >
+
+                    {% else %}
+
+                    <div class="related-placeholder">
+
+                        <i class="bi bi-code-square"></i>
+
+                    </div>
+
+                    {% endif %}
+
+                </a>
+
+
+                <div class="related-content">
+
+                    {% if related.category %}
+
+                    <span class="related-category">
+
+                        {{ related.category.name }}
+
+                    </span>
+
+                    {% endif %}
+
+
+                    <h3>
+
+                        <a
+                            href="{% url 'blog:blog_detail' related.slug %}"
+                        >
+
+                            {{ related.title }}
+
+                        </a>
+
+                    </h3>
+
+
+                    <a
+                        href="{% url 'blog:blog_detail' related.slug %}"
+                        class="related-read"
+                    >
+
+                        Read article
+
+                        <i class="bi bi-arrow-up-right"></i>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endif %}

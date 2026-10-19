@@ -1,0 +1,75 @@
+<section class="blog-filter-section">
+
+    <div class="container">
+
+        <div class="blog-filter-wrapper">
+
+            <form
+                method="GET"
+                class="blog-search"
+            >
+
+                <i class="bi bi-search"></i>
+
+                <input
+                    type="text"
+                    name="q"
+                    value="{{ query|default:'' }}"
+                    placeholder="Search insights..."
+                >
+
+                {% if selected_category %}
+
+                    <input
+                        type="hidden"
+                        name="category"
+                        value="{{ selected_category }}"
+                    >
+
+                {% endif %}
+
+            </form>
+
+
+            <div class="category-filters">
+
+                <a
+                    href="{% url 'blog:blog_list' %}"
+                    class="
+                        category-filter
+                        {% if not selected_category %}
+                            active
+                        {% endif %}
+                    "
+                >
+
+                    All
+
+                </a>
+
+
+                {% for category in categories %}
+
+                    <a
+                        href="?category={{ category.slug }}"
+                        class="
+                            category-filter
+                            {% if selected_category == category.slug %}
+                                active
+                            {% endif %}
+                        "
+                    >
+
+                        {{ category.name }}
+
+                    </a>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

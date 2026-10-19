@@ -1,0 +1,107 @@
+<section class="about-technology">
+
+    <!-- Background -->
+    <div class="about-technology__grid"></div>
+
+    <div class="about-technology__glow about-technology__glow--one"></div>
+    <div class="about-technology__glow about-technology__glow--two"></div>
+
+    <div class="about-technology__container">
+
+        <!-- Intro -->
+        <div class="about-technology__intro">
+            <div class="about-technology__intro-content">
+
+                <span class="about-technology__eyebrow">
+                    TECHNOLOGY
+                </span>
+
+                <h2>
+                    The technology
+                    <span>behind the work.</span>
+                </h2>
+
+                <p>
+                    We choose technologies based on the problem they need
+                    to solve. Our engineering ecosystem combines reliable
+                    foundations with modern tools to create digital products
+                    that are scalable, maintainable, and built for real-world use.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Technology Ecosystem -->
+        <div class="about-technology__ecosystem">
+
+            <div class="about-technology__marquee" role="region" aria-label="Technologies we use">
+                <div class="about-technology__track">
+
+                    <div class="about-technology__group">
+                        {% for technology in technologies %}
+                            <article class="technology-node">
+                                <div class="technology-node__icon">
+                                    {% if technology.icon %}
+                                        <i class="{{ technology.icon }}"></i>
+                                    {% else %}
+                                        <i class="bi bi-code-slash"></i>
+                                    {% endif %}
+                                </div>
+                                <div class="technology-node__content">
+                                    <strong>{{ technology.name }}</strong>
+                                    {% if technology.category %}
+                                        <span>{{ technology.category }}</span>
+                                    {% endif %}
+                                </div>
+                                <span class="technology-node__indicator"></span>
+                            </article>
+                        {% empty %}
+                            <article class="technology-node technology-node--fallback">
+                                <div class="technology-node__icon"><i class="bi bi-code-slash"></i></div>
+                                <div class="technology-node__content">
+                                    <strong>Software Engineering</strong>
+                                    <span>Digital Systems</span>
+                                </div>
+                            </article>
+                        {% endfor %}
+                    </div>
+
+                    <div class="about-technology__group" aria-hidden="true">
+                        {% for technology in technologies %}
+                            <article class="technology-node">
+                                <div class="technology-node__icon">
+                                    {% if technology.icon %}
+                                        <i class="{{ technology.icon }}"></i>
+                                    {% else %}
+                                        <i class="bi bi-code-slash"></i>
+                                    {% endif %}
+                                </div>
+                                <div class="technology-node__content">
+                                    <strong>{{ technology.name }}</strong>
+                                    {% if technology.category %}
+                                        <span>{{ technology.category }}</span>
+                                    {% endif %}
+                                </div>
+                                <span class="technology-node__indicator"></span>
+                            </article>
+                        {% empty %}
+                            <article class="technology-node technology-node--fallback">
+                                <div class="technology-node__icon"><i class="bi bi-code-slash"></i></div>
+                                <div class="technology-node__content">
+                                    <strong>Software Engineering</strong>
+                                    <span>Digital Systems</span>
+                                </div>
+                            </article>
+                        {% endfor %}
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

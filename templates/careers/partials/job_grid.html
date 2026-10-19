@@ -1,0 +1,46 @@
+<section
+    class="careers-jobs"
+    id="open-positions"
+>
+
+    <div class="careers-section-heading">
+
+        <span>OPEN POSITIONS</span>
+
+        <h2>
+            Find where you
+            <strong>fit.</strong>
+        </h2>
+
+    </div>
+
+    <div class="careers-jobs__grid">
+
+        {% for job in jobs %}
+
+            {% include "careers/partials/job_card.html" with job=job %}
+
+        {% empty %}
+
+            <div class="careers-empty">
+
+                <div class="careers-empty__icon">
+                    +
+                </div>
+
+                <h3>
+                    No open positions right now.
+                </h3>
+
+                <p>
+                    We're always interested in meeting talented
+                    people. Check back soon for new opportunities.
+                </p>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>

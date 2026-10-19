@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+About Nine Eight Koncepts | Software Engineering & Digital Products
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/about.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<main class="about-page">
+
+    {% include "about/hero.html" %}
+    {% include "core/partials/statistics.html" %}
+    {% include "about/who_we_are.html" %}
+    {% include "about/what_drives.html" %}
+    {% include "about/what_we_do.html" %}
+    {% include "about/how_we_think.html" %}
+    {% include "about/how_we_work.html" %}
+    {% include "about/technology.html" %}
+    {% include "about/team.html" %}
+    {% include "about/about_cta.html" %}
+
+</main>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/about.js' %}"></script>
+{% endblock %}

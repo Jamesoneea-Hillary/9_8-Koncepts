@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{{ job.title }} | Careers | Nine Eight Koncepts
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/careers/detail.css' %}">
+<link rel="stylesheet" href="{% static 'css/pages/careers/theme.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="job-detail">
+
+    <div class="job-detail__grid"></div>
+
+    <div class="job-detail__container">
+
+        <a
+            href="{% url 'careers:careers_list' %}"
+            class="job-detail__back"
+        >
+            ← BACK TO CAREERS
+        </a>
+
+        <div class="job-detail__header">
+
+            <span>
+                {{ job.department }}
+            </span>
+
+            <h1>
+                {{ job.title }}
+            </h1>
+
+            <p>
+                {{ job.short_description }}
+            </p>
+
+            <div class="job-detail__meta">
+
+                <span>
+                    {{ job.get_employment_type_display }}
+                </span>
+
+                <span>
+                    {{ job.get_work_mode_display }}
+                </span>
+
+                {% if job.location %}
+                    <span>
+                        {{ job.location }}
+                    </span>
+                {% endif %}
+
+                {% if job.application_deadline %}
+                    <span>
+                        Apply by {{ job.application_deadline|date:"M d, Y" }}
+                    </span>
+                {% endif %}
+
+            </div>
+
+        </div>
+
+
+        <div class="job-detail__layout">
+
+            <main class="job-detail__body">
+
+                <section>
+                    <h2>About the role</h2>
+                    <div class="job-detail__text">
+                        {{ job.description|linebreaks }}
+                    </div>
+                </section>
+
+
+                <section>
+
+                    <h2>Responsibilities</h2>
+
+                    <ul class="job-detail__list">
+
+                        {% for item in job.responsibility_list %}
+                            <li>
+                                <span>+</span>
+                                {{ item }}
+                            </li>
+                        {% endfor %}
+
+                    </ul>
+
+                </section>
+
+
+                <section>
+
+                    <h2>Requirements</h2>
+
+                    <ul class="job-detail__list">
+
+                        {% for item in job.requirement_list %}
+                            <li>
+                                <span>+</span>
+                                {{ item }}
+                            </li>
+                        {% endfor %}
+
+                    </ul>
+
+                </section>
+
+
+                {% if job.nice_to_have_list %}
+
+                <section>
+
+                    <h2>Nice to have</h2>
+
+                    <ul class="job-detail__list">
+
+                        {% for item in job.nice_to_have_list %}
+                            <li>
+                                <span>+</span>
+                                {{ item }}
+                            </li>
+                        {% endfor %}
+
+                    </ul>
+
+                </section>
+
+                {% endif %}
+
+            </main>
+
+
+            <aside class="job-detail__application">
+
+                <div class="job-detail__application-inner">
+
+                    <span>
+                        READY TO JOIN US?
+                    </span>
+
+                    <h2>
+                        Apply for this
+                        <strong>position.</strong>
+                    </h2>
+
+                    <form
+                        method="post"
+                        action="{% url 'careers:apply_for_job' job.slug %}"
+                        enctype="multipart/form-data"
+                    >
+
+                        {% csrf_token %}
+
+                        {% for field in form %}
+
+                            <div class="form-field">
+
+                                <label for="{{ field.id_for_label }}">
+                                    {{ field.label }}
+                                </label>
+
+                                {{ field }}
+
+                                {% if field.help_text %}
+                                    <small>
+                                        {{ field.help_text }}
+                                    </small>
+                                {% endif %}
+
+                                {% for error in field.errors %}
+                                    <small class="form-error">
+                                        {{ error }}
+                                    </small>
+                                {% endfor %}
+
+                            </div>
+
+                        {% endfor %}
+
+                        <button type="submit">
+                            SUBMIT APPLICATION
+                            <span>↗</span>
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

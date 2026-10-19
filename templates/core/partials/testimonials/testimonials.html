@@ -1,0 +1,323 @@
+{% load static %}
+
+<section class="testimonials-section" id="testimonials">
+
+    <!-- Ambient Background -->
+    <div class="testimonials-grid"></div>
+    <div class="testimonials-glow testimonials-glow--one"></div>
+    <div class="testimonials-glow testimonials-glow--two"></div>
+
+    <div class="testimonials-container">
+
+        <!-- Section Header -->
+        <div class="testimonials-header">
+
+            <div class="testimonials-header__left">
+
+                <span class="testimonials-eyebrow">
+                    <span class="section-eyebrow__line"></span>
+                    CLIENT EXPERIENCES
+                </span>
+
+                <h2 class="testimonials-title">
+                    Built with intention.
+                    <span>Experienced in reality.</span>
+                </h2>
+
+            </div>
+
+            <div class="testimonials-header__right">
+
+                <p>
+                    Great software is not only measured by what we build,
+                    but by the experience it creates for the people and
+                    businesses who use it.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        {% if testimonials %}
+
+        <!-- Testimonials Experience -->
+        <div class="testimonials-stage">
+
+            <!-- Left Index -->
+            <div class="testimonials-index">
+
+                <span class="testimonials-index__label">
+                    TESTIMONIAL
+                </span>
+
+                <div class="testimonials-index__number">
+                    <span id="testimonialCurrent">01</span>
+                    <small>/</small>
+                    <span>
+                        {% if testimonials|length < 10 %}
+                            0{{ testimonials|length }}
+                        {% else %}
+                            {{ testimonials|length }}
+                        {% endif %}
+                    </span>
+                </div>
+
+            </div>
+
+
+            <!-- Main Testimonial -->
+            <div class="testimonials-content">
+
+                <div class="testimonials-quote-mark">
+                    “
+                </div>
+
+                <div class="testimonials-slides">
+
+                    {% for testimonial in testimonials %}
+
+                    <article
+                        class="testimonial-slide {% if forloop.first %}is-active{% endif %}"
+                        data-testimonial="{{ forloop.counter }}"
+                    >
+
+                        <div class="testimonial-slide__top">
+
+                            {% if testimonial.project_name %}
+                            <div class="testimonial-project">
+
+                                <span class="testimonial-project__dot"></span>
+
+                                <span>
+                                    {{ testimonial.project_name }}
+                                </span>
+
+                            </div>
+                            {% endif %}
+
+
+                            {% if testimonial.rating %}
+                            <div class="testimonial-rating">
+
+                                {% for star in "12345" %}
+
+                                    {% if forloop.counter <= testimonial.rating %}
+                                        <i class="bi bi-star-fill"></i>
+                                    {% else %}
+                                        <i class="bi bi-star"></i>
+                                    {% endif %}
+
+                                {% endfor %}
+
+                            </div>
+                            {% endif %}
+
+                        </div>
+
+
+                        <blockquote class="testimonial-text">
+                            {{ testimonial.testimonial }}
+                        </blockquote>
+
+
+                        <div class="testimonial-client">
+
+                            <div class="testimonial-client__identity">
+
+                                {% if testimonial.client_photo %}
+
+                                    <img
+                                        src="{{ testimonial.client_photo.url }}"
+                                        alt="{{ testimonial.client_name }}"
+                                        class="testimonial-client__photo"
+                                        loading="lazy"
+                                        decoding="async"
+                                    >
+
+                                {% else %}
+
+                                    <div class="testimonial-client__initials">
+                                        {{ testimonial.initials }}
+                                    </div>
+
+                                {% endif %}
+
+                                <div class="testimonial-client__details">
+
+                                    <strong>
+                                        {{ testimonial.client_name }}
+                                    </strong>
+
+                                    {% if testimonial.client_position or testimonial.company_name %}
+
+                                    <span>
+
+                                        {% if testimonial.client_position %}
+                                            {{ testimonial.client_position }}
+                                        {% endif %}
+
+                                        {% if testimonial.client_position and testimonial.company_name %}
+                                            <span class="testimonial-divider">·</span>
+                                        {% endif %}
+
+                                        {% if testimonial.company_name %}
+                                            {{ testimonial.company_name }}
+                                        {% endif %}
+
+                                    </span>
+
+                                    {% endif %}
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="testimonial-client__verified">
+
+                                <i class="bi bi-patch-check-fill"></i>
+
+                                <span>
+                                    Client
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                    {% endfor %}
+
+                </div>
+
+
+                <!-- Navigation -->
+                <div class="testimonials-navigation">
+
+                    <button
+                        type="button"
+                        class="testimonial-nav testimonial-nav--prev"
+                        aria-label="Previous testimonial"
+                    >
+                        <i class="bi bi-arrow-left"></i>
+                    </button>
+
+                    <div class="testimonial-progress">
+
+                        <div class="testimonial-progress__track">
+                            <span></span>
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="testimonial-nav testimonial-nav--next"
+                        aria-label="Next testimonial"
+                    >
+                        <i class="bi bi-arrow-right"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Right Visual -->
+            <div class="testimonials-visual">
+
+                <div class="testimonials-visual__halo"></div>
+
+                <div class="testimonial-orbit testimonial-orbit--one"></div>
+                <div class="testimonial-orbit testimonial-orbit--two"></div>
+
+                <div class="testimonial-system">
+
+                    <div class="testimonial-system__top">
+
+                        <span>
+                            <span class="system-status"></span>
+                            CLIENT EXPERIENCE
+                        </span>
+
+                        <span>
+                            9 8
+                        </span>
+
+                    </div>
+
+
+                    <div class="testimonial-system__center">
+
+                        <div class="testimonial-system__icon">
+                            <i class="bi bi-chat-quote"></i>
+                        </div>
+
+                        <div class="testimonial-system__lines">
+
+                            <span></span>
+                            <span></span>
+                            <span></span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="testimonial-system__bottom">
+
+                        <span>
+                            <i class="bi bi-check2-circle"></i>
+                            Delivered
+                        </span>
+
+                        <span>
+                            <i class="bi bi-arrow-up-right"></i>
+                            9 8 KONCEPTS
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="testimonial-floating testimonial-floating--top">
+                    <i class="bi bi-stars"></i>
+                    <span>Built for impact</span>
+                </div>
+
+                <div class="testimonial-floating testimonial-floating--bottom">
+                    <i class="bi bi-code-slash"></i>
+                    <span>Engineered with precision</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        {% else %}
+
+        <!-- No Testimonials -->
+        <div class="testimonials-empty">
+
+            <span class="testimonials-empty__icon">
+                <i class="bi bi-chat-square-quote"></i>
+            </span>
+
+            <h3>Client experiences are coming soon.</h3>
+
+            <p>
+                As we continue building meaningful digital products,
+                this space will showcase experiences from the businesses
+                we work with.
+            </p>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</section>

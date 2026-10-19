@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Insights & Ideas | Nine Eight Koncepts
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/blog.css' %}">
+<link rel="stylesheet" href="{% static 'css/pages/blog-listing.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="blog-page">
+
+    {% include "blog/partials/blog_hero.html" %}
+
+    {% include "blog/partials/featured_post.html" %}
+
+    {% include "blog/partials/blog_filters.html" %}
+
+    {% include "blog/partials/blog_grid.html" %}
+
+    {% include "blog/partials/blog_pagination.html" %}
+
+    {% include "blog/partials/newsletter.html" %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,183 @@
+<section class="blog-posts-section">
+
+    <div class="container">
+
+        <div class="blog-section-heading">
+
+            <div>
+
+                <span class="section-label">
+
+                    LATEST INSIGHTS
+
+                </span>
+
+
+                <h2>
+
+                    Explore Our
+
+                    <span>
+                        Thinking.
+                    </span>
+
+                </h2>
+
+            </div>
+
+
+            <span class="article-count">
+
+                {{ posts.paginator.count }}
+
+                Article{{ posts.paginator.count|pluralize }}
+
+            </span>
+
+        </div>
+
+
+        <div class="blog-grid">
+
+            {% for post in posts %}
+
+                <article class="blog-card">
+
+                    <a
+                        href="{% url 'blog:blog_detail' post.slug %}"
+                        class="blog-card-image"
+                    >
+
+                        {% if post.featured_image %}
+
+                            <img
+                                src="{{ post.featured_image.url }}"
+                                alt="{{ post.title }}"
+                                loading="lazy"
+                                decoding="async"
+                            >
+
+                        {% else %}
+
+                            <div class="card-placeholder">
+
+                                <i class="bi bi-cpu"></i>
+
+                            </div>
+
+                        {% endif %}
+
+
+                        <span class="image-overlay"></span>
+
+
+                        <span class="read-indicator">
+
+                            <i class="bi bi-arrow-up-right"></i>
+
+                        </span>
+
+                    </a>
+
+
+                    <div class="blog-card-content">
+
+                        <div class="blog-card-meta">
+
+                            {% if post.category %}
+
+                                <span class="card-category">
+
+                                    {{ post.category.name }}
+
+                                </span>
+
+                            {% endif %}
+
+
+                            {% if post.published_at %}
+
+                                <span class="post-date">
+
+                                    {{ post.published_at|date:"M d, Y" }}
+
+                                </span>
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <h3>
+
+                            <a
+                                href="{% url 'blog:blog_detail' post.slug %}"
+                            >
+
+                                {{ post.title }}
+
+                            </a>
+
+                        </h3>
+
+
+                        <p>
+
+                            {{ post.excerpt|truncatechars:140 }}
+
+                        </p>
+
+
+                        <div class="blog-card-footer">
+
+                            <span class="read-time">
+
+                                <i class="bi bi-clock"></i>
+
+                                5 min read
+
+                            </span>
+
+
+                            <a
+                                href="{% url 'blog:blog_detail' post.slug %}"
+                                class="card-read-link"
+                            >
+
+                                Read More
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            {% empty %}
+
+                <div class="no-posts">
+
+                    <i class="bi bi-journal-x"></i>
+
+                    <h3>
+
+                        No articles found
+
+                    </h3>
+
+                    <p>
+
+                        Try searching for something else.
+
+                    </p>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>

@@ -1,0 +1,164 @@
+{% load static %}
+
+<section class="team-section" id="team">
+
+    <!-- Ambient environment -->
+    <div class="team-section__grid"></div>
+
+    <div class="team-glow team-glow--one"></div>
+    <div class="team-glow team-glow--two"></div>
+
+
+    <div class="team-container">
+
+        <!-- Header -->
+        <div class="team-header">
+
+            <div class="team-header__main">
+
+                <span class="team-eyebrow">
+                    <span class="section-eyebrow__line"></span>
+                    THE PEOPLE BEHIND THE PRODUCT
+                </span>
+
+                <h2 class="team-title">
+                    Small team.
+                    <span>Big thinking.</span>
+                </h2>
+
+            </div>
+
+
+            <div class="team-header__side">
+
+                <p>
+                    A focused team bringing together engineering,
+                    design and product thinking to build digital
+                    experiences that matter.
+                </p>
+
+                <a
+                    href="{% url 'team:team_list' %}"
+                    class="team-header__link"
+                >
+                    <span>Meet the Team</span>
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        {% if featured_team %}
+
+        <!-- Team members -->
+        <div class="team-grid">
+
+            {% for member in featured_team %}
+
+            <article class="team-member">
+
+                <!-- Image -->
+                <a
+                    href="{{ member.get_absolute_url }}"
+                    class="team-member__image-link"
+                    aria-label="View {{ member.full_name }}'s profile"
+                >
+
+                    <div class="team-member__image">
+
+                        {% if member.profile_image %}
+
+                            <img
+                                src="{{ member.profile_image.url }}"
+                                alt="{{ member.full_name }}"
+                                loading="lazy"
+                            >
+
+                        {% else %}
+
+                            <div class="team-member__placeholder">
+                                <i class="bi bi-person"></i>
+                            </div>
+
+                        {% endif %}
+
+
+                        <div class="team-member__image-overlay">
+
+                            <span>
+                                VIEW PROFILE
+                            </span>
+
+                            <i class="bi bi-arrow-up-right"></i>
+
+                        </div>
+
+
+                        <span class="team-member__number">
+                            {% if forloop.counter < 10 %}
+                                0{{ forloop.counter }}
+                            {% else %}
+                                {{ forloop.counter }}
+                            {% endif %}
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- Information -->
+                <div class="team-member__info">
+
+                    <div class="team-member__role">
+                        {{ member.role }}
+                    </div>
+
+                    <h3 class="team-member__name">
+                        {{ member.full_name }}
+                    </h3>
+
+
+                    {% if member.short_bio %}
+
+                    <p class="team-member__bio">
+                        {{ member.short_bio }}
+                    </p>
+
+                    {% endif %}
+
+
+                    <div class="team-member__footer">
+
+                        <span class="team-member__status">
+
+                            <span class="team-member__status-dot"></span>
+
+                            ACTIVE TEAM
+
+                        </span>
+
+                        <a
+                            href="{{ member.get_absolute_url }}"
+                            aria-label="View {{ member.full_name }} profile"
+                        >
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            {% endfor %}
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</section>

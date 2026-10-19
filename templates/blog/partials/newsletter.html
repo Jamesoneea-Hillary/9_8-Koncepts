@@ -1,0 +1,86 @@
+<section class="blog-newsletter" id="newsletter">
+
+    <div class="newsletter-grid"></div>
+
+    <div class="container">
+
+        <div class="newsletter-content">
+
+            <div>
+
+                <span class="section-label">
+
+                    STAY UPDATED
+
+                </span>
+
+
+                <h2>
+
+                    Technology moves fast.
+
+                    <span>
+                        Stay ahead.
+                    </span>
+
+                </h2>
+
+
+                <p>
+
+                    Get insights, ideas, and technology updates
+                    delivered straight to your inbox.
+
+                </p>
+
+            </div>
+
+
+            <div class="newsletter-form-wrap">
+                <form
+                    class="newsletter-form"
+                    method="post"
+                    action="{% url 'blog:newsletter_subscribe' %}#newsletter"
+                >
+
+                {% csrf_token %}
+
+                <input
+                    type="email"
+                    name="email"
+                    maxlength="254"
+                    autocomplete="email"
+                    aria-label="Email address"
+                    placeholder="Enter your email address"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                >
+
+                    Subscribe
+
+                    <i class="bi bi-arrow-right"></i>
+
+                </button>
+
+                </form>
+
+                {% if messages %}
+                    <div class="newsletter-messages" aria-live="polite">
+                        {% for message in messages %}
+                            <p class="newsletter-message newsletter-message--{{ message.tags }}">
+                                {{ message }}
+                            </p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                </div>
+
+        </div>
+
+    </div>
+
+</section>

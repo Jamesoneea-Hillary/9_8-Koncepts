@@ -1,0 +1,360 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block title %}
+
+{{ service.title }} | Nine Eight Koncepts
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<!-- SERVICE HERO -->
+
+<section class="service-detail-hero">
+
+    <div class="container">
+
+        <div class="service-detail-grid">
+
+
+            <!-- CONTENT -->
+
+            <div class="service-detail-content">
+
+                <span class="section-badge">
+
+                    OUR SERVICE
+
+                </span>
+
+
+                <h1>
+
+                    {{ service.title }}
+
+                </h1>
+
+
+                <p>
+
+                    {{ service.short_description }}
+
+                </p>
+
+
+                <a
+                    href="{% url 'contact:contact' %}"
+                    class="btn btn-primary"
+                >
+
+                    Start Your Project
+
+                    <i class="bi bi-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+            <!-- IMAGE -->
+
+            {% if service.hero_image %}
+
+                <div class="service-detail-image">
+
+                    <img
+                        src="{{ service.hero_image.url }}"
+                        alt="{{ service.title }}"
+                    >
+
+                </div>
+
+            {% endif %}
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- DESCRIPTION -->
+
+<section class="service-description">
+
+    <div class="container">
+
+        <div class="service-description-content">
+
+            <span class="section-badge">
+
+                ABOUT THIS SERVICE
+
+            </span>
+
+
+            <h2>
+
+                Built Around Your
+                <span>Business Goals.</span>
+
+            </h2>
+
+
+            <div class="service-description-text">
+
+                {{ service.description|linebreaks }}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- FEATURES -->
+
+{% if service.features.all %}
+
+<section class="service-features">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span class="section-badge">
+
+                WHAT'S INCLUDED
+
+            </span>
+
+            <h2>
+
+                Everything You Need
+                <span>To Move Forward.</span>
+
+            </h2>
+
+        </div>
+
+
+        <div class="features-grid">
+
+            {% for feature in service.features.all %}
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+
+                        <i class="bi {{ feature.icon }}"></i>
+
+                    </div>
+
+
+                    <h3>
+
+                        {{ feature.title }}
+
+                    </h3>
+
+
+                    {% if feature.description %}
+
+                        <p>
+
+                            {{ feature.description }}
+
+                        </p>
+
+                    {% endif %}
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endif %}
+
+
+
+<!-- BENEFITS -->
+
+{% if service.benefits.all %}
+
+<section class="service-benefits">
+
+    <div class="container">
+
+        <div class="benefits-grid">
+
+            {% for benefit in service.benefits.all %}
+
+                <article class="benefit-card">
+
+                    <div class="benefit-icon">
+
+                        <i class="bi {{ benefit.icon }}"></i>
+
+                    </div>
+
+
+                    <h3>
+
+                        {{ benefit.title }}
+
+                    </h3>
+
+
+                    <p>
+
+                        {{ benefit.description }}
+
+                    </p>
+
+                </article>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endif %}
+
+
+
+<!-- TECHNOLOGIES -->
+
+{% if service.technologies.all %}
+
+<section class="service-technologies">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span class="section-badge">
+
+                TECHNOLOGY
+
+            </span>
+
+
+            <h2>
+
+                Built With
+                <span>Modern Technology.</span>
+
+            </h2>
+
+        </div>
+
+
+        <div class="technologies-grid">
+
+            {% for technology in service.technologies.all %}
+
+                <div class="technology-card">
+
+
+                    {% if technology.logo %}
+
+                        <img
+                            src="{{ technology.logo.url }}"
+                            alt="{{ technology.name }}"
+                        >
+
+                    {% elif technology.icon %}
+
+                        <i class="bi {{ technology.icon }}"></i>
+
+                    {% endif %}
+
+
+                    <span>
+
+                        {{ technology.name }}
+
+                    </span>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endif %}
+
+
+
+<!-- CTA -->
+
+<section class="service-cta">
+
+    <div class="container">
+
+        <div class="service-cta-content">
+
+            <span>
+
+                HAVE A PROJECT IN MIND?
+
+            </span>
+
+
+            <h2>
+
+                Let's Build Something
+                <span>Exceptional.</span>
+
+            </h2>
+
+
+            <p>
+
+                Tell us what you want to build and let's
+                turn your idea into a powerful digital solution.
+
+            </p>
+
+
+            <a
+                href="{% url 'contact:contact' %}"
+                class="btn btn-primary"
+            >
+
+                Start a Conversation
+
+                <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+{% endblock %}

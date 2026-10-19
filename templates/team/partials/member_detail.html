@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{{ member.full_name }} | Nine Eight Koncepts
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/team/detail.css' %}">
+<link rel="stylesheet" href="{% static 'css/pages/team/theme.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="member-detail">
+
+    <div class="member-detail__grid"></div>
+
+    <div class="member-detail__container">
+
+        <a href="{% url 'team:team_list' %}" class="member-detail__back">
+            <span>←</span>
+            BACK TO TEAM
+        </a>
+
+        <div class="member-detail__layout">
+
+            <!-- Image -->
+            <div class="member-detail__visual">
+
+                <div class="member-detail__image">
+
+                    {% if member.profile_image %}
+                        <img
+                            src="{{ member.profile_image.url }}"
+                            alt="{{ member.full_name }}"
+                        >
+                    {% else %}
+                        <div class="member-detail__placeholder">
+                            {{ member.full_name|first|upper }}
+                        </div>
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+            <!-- Information -->
+            <div class="member-detail__content">
+
+                <span class="member-detail__role">
+                    {{ member.role }}
+                </span>
+
+                <h1>
+                    {{ member.full_name }}
+                </h1>
+
+                {% if member.short_bio %}
+                    <p class="member-detail__intro">
+                        {{ member.short_bio }}
+                    </p>
+                {% endif %}
+
+                <div class="member-detail__divider"></div>
+
+                {% if member.bio %}
+                    <div class="member-detail__bio">
+                        {{ member.bio|linebreaks }}
+                    </div>
+                {% endif %}
+
+                <div class="member-detail__contact">
+
+                    {% if member.email %}
+                        <a href="mailto:{{ member.email }}">
+                            <span class="label">EMAIL</span>
+                            <span>{{ member.email }}</span>
+                        </a>
+                    {% endif %}
+
+                    {% if member.phone %}
+                        <a href="tel:{{ member.phone }}">
+                            <span class="label">PHONE</span>
+                            <span>{{ member.phone }}</span>
+                        </a>
+                    {% endif %}
+
+                </div>
+
+                <div class="member-detail__socials">
+
+                    {% if member.linkedin_url %}
+                        <a
+                            href="{{ member.linkedin_url }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            LinkedIn ↗
+                        </a>
+                    {% endif %}
+
+                    {% if member.github_url %}
+                        <a
+                            href="{{ member.github_url }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            GitHub ↗
+                        </a>
+                    {% endif %}
+
+                    {% if member.twitter_url %}
+                        <a
+                            href="{{ member.twitter_url }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            X ↗
+                        </a>
+                    {% endif %}
+
+                    {% if member.website_url %}
+                        <a
+                            href="{{ member.website_url }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Website ↗
+                        </a>
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+{% if related_members %}
+
+<section class="member-related">
+
+    <div class="member-related__heading">
+
+        <span>
+            MORE FROM THE TEAM
+        </span>
+
+        <h2>
+            Meet more of our <strong>people.</strong>
+        </h2>
+
+    </div>
+
+    <div class="member-related__grid">
+
+        {% for related in related_members %}
+
+            {% include "team/partials/team_card.html" with member=related %}
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endif %}
+
+
+<section class="member-detail-cta">
+
+    <div class="member-detail-cta__content">
+
+        <span>
+            HAVE A PROJECT IN MIND?
+        </span>
+
+        <h2>
+            Let's build something
+            <strong>remarkable.</strong>
+        </h2>
+
+        <a href="{% url 'contact:contact' %}">
+            START A PROJECT
+            <span>↗</span>
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

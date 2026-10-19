@@ -1,0 +1,81 @@
+.careers-featured,
+.careers-jobs {
+    padding: 8rem 7vw;
+
+    background: #070b11;
+}
+
+.careers-featured {
+    background: #05080d;
+}
+
+.careers-featured__grid,
+.careers-jobs__grid {
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 1.5rem;
+}
+
+.careers-empty {
+    grid-column: 1 / -1;
+
+    padding: 6rem 2rem;
+
+    border: 1px solid rgba(255,255,255,0.07);
+
+    text-align: center;
+}
+
+.careers-empty__icon {
+    width: 60px;
+    height: 60px;
+
+    display: grid;
+    place-items: center;
+
+    margin: 0 auto 1.5rem;
+
+    border: 1px solid rgba(0,174,239,0.3);
+
+    color: #00aeef;
+
+    font-size: 1.5rem;
+}
+
+.careers-empty h3 {
+    margin-bottom: 0.75rem;
+}
+
+.careers-empty p {
+    max-width: 500px;
+
+    margin: auto;
+
+    color: rgba(255,255,255,0.55);
+
+    line-height: 1.8;
+}
+
+@media (max-width: 1000px) {
+
+    .careers-featured__grid,
+    .careers-jobs__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .careers-featured__grid,
+    .careers-jobs__grid {
+        grid-template-columns: 1fr;
+    }
+
+}

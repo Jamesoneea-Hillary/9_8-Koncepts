@@ -1,0 +1,93 @@
+<article class="team-card {% if featured %}team-card--featured{% endif %}">
+
+    <a
+        href="{{ member.get_absolute_url }}"
+        class="team-card__image-link"
+        aria-label="View {{ member.full_name }}'s profile"
+    >
+
+        <div class="team-card__image">
+
+            {% if member.profile_image %}
+                <img
+                    src="{{ member.profile_image.url }}"
+                    alt="{{ member.full_name }}"
+                    loading="lazy"
+                >
+            {% else %}
+
+                <div class="team-card__placeholder">
+                    <span>
+                        {{ member.full_name|first|upper }}
+                    </span>
+                </div>
+
+            {% endif %}
+
+            <div class="team-card__overlay"></div>
+
+            <span class="team-card__view">
+                VIEW PROFILE
+                <span>↗</span>
+            </span>
+
+        </div>
+
+    </a>
+
+    <div class="team-card__content">
+
+        <span class="team-card__role">
+            {{ member.role }}
+        </span>
+
+        <h3>
+            {{ member.full_name }}
+        </h3>
+
+        {% if member.short_bio %}
+            <p>
+                {{ member.short_bio }}
+            </p>
+        {% endif %}
+
+        <div class="team-card__socials">
+
+            {% if member.linkedin_url %}
+                <a
+                    href="{{ member.linkedin_url }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="{{ member.full_name }} on LinkedIn"
+                >
+                    <i class="bi bi-linkedin"></i>
+                </a>
+            {% endif %}
+
+            {% if member.github_url %}
+                <a
+                    href="{{ member.github_url }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="{{ member.full_name }} on GitHub"
+                >
+                    <i class="bi bi-github"></i>
+                </a>
+            {% endif %}
+
+            {% if member.twitter_url %}
+                <a
+                    href="{{ member.twitter_url }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="{{ member.full_name }} on X"
+                >
+                    <i class="bi bi-twitter-x"></i>
+                </a>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</article>

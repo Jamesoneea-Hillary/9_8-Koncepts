@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Nine Eight Koncepts | Engineering Digital Excellence
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/home.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="home-page">
+
+{% include "core/partials/hero/hero.html" %}
+{% include "core/partials/statistics.html" %}
+
+<section class="about-section">
+{% include "core/partials/who_we_are.html" %}
+{% include "services/services.html." %}
+{% include "core/partials/process/process.html" %}
+{% include "core/partials/portfolio/portfolio.html" %}
+</section>
+
+{% include "core/partials/why_choose.html" %}
+{% include "core/partials/testimonials/testimonials.html" %}
+{% include "core/partials/industries.html" %}
+{% include "core/partials/team_preview.html" %}
+{% include "core/partials/partners.html" %}
+{% include "core/partials/cta.html" %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+<section class="team-grid-section">
+
+    <div class="section-heading">
+        <p>
+            Different skills. Different perspectives.
+            One shared commitment to building better technology.
+        </p>
+    </div>
+
+    <div class="team-grid">
+
+        {% for member in members %}
+
+            {% include "team/partials/team_card.html" with member=member %}
+
+        {% empty %}
+
+            <div class="team-empty">
+                <h3>Our team is growing.</h3>
+                <p>
+                    New team members will appear here soon.
+                </p>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>

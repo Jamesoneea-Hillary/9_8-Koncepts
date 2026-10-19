@@ -1,0 +1,47 @@
+{% load static %}
+
+<section class="who-we-are__impact" id="impact">
+
+    <div class="impact-container">
+
+        {% if statistics %}
+
+        <div class="impact-stats">
+
+            {% for statistic in statistics %}
+
+            <article class="impact-card">
+
+                <div class="impact-card__icon">
+                    {% if statistic.icon %}
+                        <i class="{{ statistic.icon }}"></i>
+                    {% else %}
+                        <i class="bi bi-graph-up-arrow"></i>
+                    {% endif %}
+                </div>
+
+                <div class="impact-card__content">
+
+                    <div
+                        class="impact-card__number counter"
+                        data-counter-value="{{ statistic.number }}">
+                        {{ statistic.number }}
+                    </div>
+
+                    <div class="impact-card__label">
+                        {{ statistic.label }}
+                    </div>
+
+                </div>
+
+            </article>
+
+            {% endfor %}
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</section>

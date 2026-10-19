@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{{ post.title }} | Nine Eight Koncepts
+{% endblock %}
+
+{% block extra_css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'css/pages/blog.css' %}">
+
+<link
+    rel="stylesheet"
+    href="{% static 'css/pages/blog/article.css' %}">
+
+<link
+    rel="stylesheet"
+    href="{% static 'css/pages/blog/article-theme.css' %}">
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="article-page">
+
+    {% include "blog/partials/article_progress.html" %}
+
+    {% include "blog/partials/article_hero.html" %}
+
+
+    <section class="article-main">
+
+        <div class="container">
+
+            <div class="article-layout">
+
+                {% include "blog/partials/article_sidebar.html" %}
+
+                {% include "blog/partials/article_body.html" %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    {% include "blog/partials/article_author.html" %}
+
+    {% include "blog/partials/related_posts.html" %}
+
+    {% include "blog/partials/article_cta.html" %}
+
+</div>
+
+{% endblock %}
+
+
+{% block extra_js %}
+
+<script src="{% static 'js/article.js' %}"></script>
+
+{% endblock %}

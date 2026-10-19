@@ -1,0 +1,94 @@
+.careers-cta {
+    padding: 9rem 7vw;
+
+    background: #05080d;
+
+    text-align: center;
+}
+
+.careers-cta__grid {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 60px 60px;
+}
+
+.careers-cta__content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 800px;
+
+    margin: auto;
+}
+
+.careers-cta__content > span {
+    color: #00aeef;
+
+    font-size: 0.7rem;
+    font-weight: 800;
+
+    letter-spacing: 0.18em;
+}
+
+.careers-cta h2 {
+    margin: 1.5rem 0;
+
+    font-size: clamp(2.5rem, 6vw, 5rem);
+
+    line-height: 1;
+
+    letter-spacing: -0.05em;
+}
+
+.careers-cta h2 strong {
+    color: #00aeef;
+}
+
+.careers-cta p {
+    max-width: 600px;
+
+    margin: 0 auto 2.5rem;
+
+    color: rgba(255,255,255,0.58);
+
+    line-height: 1.8;
+}
+
+.careers-cta a {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+
+    padding: 1rem 1.5rem;
+
+    background: #00aeef;
+    color: #05080d;
+
+    font-size: 0.72rem;
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+
+    text-decoration: none;
+
+    transition: 0.3s ease;
+}
+
+.careers-cta a:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 40px rgba(0,174,239,0.2);
+}

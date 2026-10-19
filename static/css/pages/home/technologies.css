@@ -1,0 +1,67 @@
+.technologies-section{
+    padding:100px 0;
+    background:var(--surface);
+    overflow:hidden;
+}
+
+.section-header{
+    text-align:center;
+    max-width:700px;
+    margin:0 auto 70px;
+}
+
+.tech-slider{
+    overflow:hidden;
+    position:relative;
+}
+
+.tech-track{
+    display:flex;
+    align-items:center;
+    gap:60px;
+    width:max-content;
+    animation:scrollTech 30s linear infinite;
+}
+
+.tech-item{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    flex-direction:column;
+    width:180px;
+    height:90px;
+    border-radius:18px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+    transition:.4s;
+}
+
+.tech-item:hover{
+    transform:translateY(-8px);
+    border-color:var(--primary);
+}
+
+.tech-item i{
+    font-size:2rem;
+    color:#6bc5f7;
+    transition:.4s;
+}
+
+.tech-item span{
+    font-size:.8rem;
+    color:var(--text-light);
+    transition:.4s;
+}
+.tech-item:hover span{
+    color:var(--primary);
+}
+
+@keyframes scrollTech{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(-50%);
+    }
+}

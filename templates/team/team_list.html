@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Our Team | Nine Eight Koncepts
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/team/team.css' %}">
+<link rel="stylesheet" href="{% static 'css/pages/team/theme.css' %}">
+{% endblock %}
+
+{% block content %}
+
+{% include "team/partials/team_hero.html" %}
+
+{% include "team/partials/team_grid.html" %}
+
+{% include "team/partials/team_cta.html" %}
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/team.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,46 @@
+.careers-hero,
+.careers-featured,
+.careers-jobs,
+.careers-cta {
+    position: relative;
+    overflow: hidden;
+}
+
+.careers-section-heading {
+    position: relative;
+    z-index: 2;
+
+    max-width: 760px;
+
+    margin-bottom: 4rem;
+}
+
+.careers-section-heading > span {
+    color: #00aeef;
+
+    font-size: 0.7rem;
+    font-weight: 800;
+
+    letter-spacing: 0.18em;
+}
+
+.careers-section-heading h2 {
+    margin: 1rem 0;
+
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+}
+
+.careers-section-heading strong {
+    color: #00aeef;
+}
+
+.careers-section-heading p {
+    max-width: 650px;
+
+    color: rgba(255,255,255,0.6);
+
+    line-height: 1.8;
+}

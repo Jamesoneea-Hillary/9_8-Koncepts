@@ -1,0 +1,122 @@
+{% if featured_post %}
+
+<section class="featured-post-section">
+
+    <div class="container">
+
+        <div class="section-label">
+
+            <span class="label-line"></span>
+
+            FEATURED INSIGHT
+
+        </div>
+
+
+        <article class="featured-post">
+
+            <div class="featured-image">
+
+                {% if featured_post.featured_image %}
+
+                    <img
+                        src="{{ featured_post.featured_image.url }}"
+                        alt="{{ featured_post.title }}"
+                    >
+
+                {% else %}
+
+                    <div class="image-placeholder">
+
+                        <i class="bi bi-code-slash"></i>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+
+            <div class="featured-content">
+
+                {% if featured_post.category %}
+
+                    <span class="featured-category">
+
+                        {{ featured_post.category.name }}
+
+                    </span>
+
+                {% endif %}
+
+
+                <h2>
+
+                    <a
+                        href="{% url 'blog:blog_detail' featured_post.slug %}"
+                    >
+
+                        {{ featured_post.title }}
+
+                    </a>
+
+                </h2>
+
+
+                <p>
+
+                    {{ featured_post.excerpt }}
+
+                </p>
+
+
+                <div class="featured-footer">
+
+                    <div class="post-author">
+
+                        <div class="author-avatar">
+
+                            {{ featured_post.author.username|slice:":1"|upper }}
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Written by
+                            </span>
+
+                            <strong>
+
+                                {{ featured_post.author.username|default:"Nine Eight Koncepts" }}
+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="{% url 'blog:blog_detail' featured_post.slug %}"
+                        class="read-article-btn"
+                    >
+
+                        Read Article
+
+                        <i class="bi bi-arrow-up-right"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+{% endif %}

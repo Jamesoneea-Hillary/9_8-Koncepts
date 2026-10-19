@@ -1,0 +1,235 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block title %}
+
+Our Portfolio | Nine Eight Koncepts
+
+{% endblock %}
+
+
+{% block extra_css %}
+
+<link
+    rel="stylesheet"
+    href="{% static 'css/pages/portfolio.css' %}"
+>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<!-- HERO -->
+
+<section class="portfolio-page-hero">
+
+    <div class="portfolio-page-hero__grid"></div>
+    <div class="portfolio-page-hero__glow portfolio-page-hero__glow--one"></div>
+    <div class="portfolio-page-hero__glow portfolio-page-hero__glow--two"></div>
+
+    <div class="portfolio-page-hero__container">
+        <div class="portfolio-page-intro">
+
+            <div class="portfolio-page-hero__label">
+                <span></span>
+                OUR PORTFOLIO
+            </div>
+
+            <h1>
+                Digital solutions
+                <span>built with purpose.</span>
+            </h1>
+
+            <p>
+                Explore websites, applications
+                and digital platforms designed
+                to solve real-world problems
+                and create meaningful experiences.
+            </p>
+        </div>
+    </div>
+
+    <div class="portfolio-page-hero__rule"></div>
+
+</section>
+
+
+<!-- FILTERS -->
+
+<section class="portfolio-page-content">
+
+    <div class="portfolio-page-content__grid"></div>
+
+    <div class="portfolio-page-container">
+
+        <header class="portfolio-work-intro reveal">
+            <div>
+                <div class="portfolio-work-intro__label">
+                    <span></span>
+                    SELECTED PROJECTS
+                </div>
+                <h2>Ideas made <span>real.</span></h2>
+            </div>
+            <p>Digital products and experiences shaped around real people, meaningful challenges, and measurable outcomes.</p>
+        </header>
+
+
+        <div class="portfolio-filters reveal">
+
+            <button
+                class="filter-btn active"
+                data-filter="all"
+            >
+
+                All Work
+
+            </button>
+
+
+            {% for category in categories %}
+
+            <button
+                class="filter-btn"
+                data-filter="{{ category.slug }}"
+            >
+
+                {{ category.name }}
+
+            </button>
+
+            {% endfor %}
+
+        </div>
+
+        <!-- PROJECTS -->
+
+        <div class="portfolio-page-grid">
+
+            {% for project in projects %}
+
+            <article
+                class="
+                    portfolio-card
+                    portfolio-project
+                    magnetic-card
+                    reveal
+                    show"
+                data-category="{{ project.category.slug }}">
+                
+                <div class="portfolio-image">
+
+                    {% if project.featured_image %}
+
+                        <img
+                            src="{{ project.featured_image.url }}"
+                            alt="{{ project.title }}"
+                            loading="lazy"
+                            decoding="async"
+                        >
+
+                    {% else %}
+
+                        <div class="portfolio-image__placeholder" aria-hidden="true">
+                            <i class="bi bi-window-stack"></i>
+                        </div>
+
+                    {% endif %}
+
+
+                    <div class="portfolio-overlay">
+
+                        {% if project.category %}
+                            <span class="portfolio-category">{{ project.category.name }}</span>
+                        {% endif %}
+
+                        <a
+                            href="{% url 'portfolio:portfolio_detail' project.slug %}"
+                            class="portfolio-view"
+                        >
+                            <i class="bi bi-arrow-up-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="portfolio-content">
+
+                    <h3>
+
+                        <a
+                            href="{% url 'portfolio:portfolio_detail' project.slug %}"
+                        >
+
+                            {{ project.title }}
+
+                        </a>
+
+                    </h3>
+
+
+                    <p>
+
+                        {{ project.short_description }}
+
+                    </p>
+
+
+                    <div class="portfolio-technologies">
+
+                        {% for technology in project.technologies.all|slice:":4" %}
+
+                        <span class="portfolio-tech-chip">
+
+                            <span class="portfolio-tech-chip__icon" aria-hidden="true">
+                                {% if technology.icon %}
+                                    <i class="{{ technology.icon }}"></i>
+                                {% elif technology.logo %}
+                                    <img src="{{ technology.logo.url }}" alt="">
+                                {% else %}
+                                    <i class="bi bi-code-slash"></i>
+                                {% endif %}
+                            </span>
+
+                            <span class="portfolio-tech-chip__name">{{ technology.name }}</span>
+
+                        </span>
+
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            {% empty %}
+
+                <div class="portfolio-page-empty">
+                    <span class="portfolio-page-empty__icon"><i class="bi bi-collection" aria-hidden="true"></i></span>
+                    <h3>Projects are on the way</h3>
+                    <p>Our latest work will appear here soon. Check back for new projects and launches.</p>
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+
+{% endblock %}
+
+
+{% block extra_js %}
+
+<script src="{% static 'js/portfolio.js' %}"></script>
+
+{% endblock %}

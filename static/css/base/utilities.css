@@ -1,0 +1,20 @@
+.container{
+    width:min(90%,var(--container));
+    margin:auto;
+}
+
+.section{
+    padding:120px 0;
+}
+
+.text-center{
+    text-align:center;
+}
+
+.flex{
+    display:flex;
+}
+
+.grid{
+    display:grid;
+}

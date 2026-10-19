@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Careers | Nine Eight Koncepts
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/careers/careers.css' %}">
+<link rel="stylesheet" href="{% static 'css/pages/careers/hero.css' %}">
+<link rel="stylesheet" href="{% static 'css/pages/careers/jobs.css' %}">
+<link rel="stylesheet" href="{% static 'css/pages/careers/card.css' %}">
+<link rel="stylesheet" href="{% static 'css/pages/careers/cta.css' %}">
+<link rel="stylesheet" href="{% static 'css/pages/careers/theme.css' %}">
+{% endblock %}
+
+{% block content %}
+
+{% include "careers/partials/careers_hero.html" %}
+
+{% include "careers/partials/featured_jobs.html" %}
+
+{% include "careers/partials/job_grid.html" %}
+
+{% include "careers/partials/careers_cta.html" %}
+
+{% endblock %}

@@ -1,0 +1,210 @@
+<section class="about-team">
+
+    <!-- Ambient environment -->
+    <div class="about-team__grid"></div>
+
+    <div class="about-team__glow about-team__glow--one"></div>
+    <div class="about-team__glow about-team__glow--two"></div>
+
+
+    <div class="about-team__container">
+
+        <!-- INTRO -->
+        <div class="about-team__intro">
+
+            <span class="about-team__number"></span>
+
+            <div class="about-team__intro-content">
+
+                <span class="about-team__eyebrow">
+                    THE PEOPLE
+                </span>
+
+                <h2>
+                    Technology is built
+                    <span>by people.</span>
+                </h2>
+
+                <p>
+                    Behind every product we build is a team that brings
+                    together engineering, creativity, problem-solving,
+                    and a commitment to building things that matter.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- TEAM -->
+        <div class="about-team__layout">
+
+            <div class="about-team__visual">
+
+                <div class="about-team__visual-grid"></div>
+
+                <div class="about-team__visual-glow"></div>
+
+            </div>
+
+
+            <div class="about-team__members">
+
+                {% for member in featured_team %}
+
+                    <article class="about-team__member">
+
+                        <div class="about-team__member-image">
+
+                            {% if member.profile_image %}
+
+                                <img
+                                    src="{{ member.profile_image.url }}"
+                                    alt="{{ member.full_name }}"
+                                    loading="lazy"
+                                >
+
+                            {% else %}
+
+                                <div class="about-team__member-placeholder">
+
+                                    <span>
+                                        {{ member.full_name|slice:":1" }}
+                                    </span>
+
+                                </div>
+
+                            {% endif %}
+
+
+                            <div class="about-team__member-overlay"></div>
+
+                            <div class="about-team__member-index">
+                                {{ forloop.counter|stringformat:"02d" }}
+                            </div>
+
+                        </div>
+
+
+                        <div class="about-team__member-info">
+
+                            <div>
+
+                                <h3>
+                                    {{ member.full_name }}
+                                </h3>
+
+                                <span class="about-team__member-role">
+                                    {{ member.role }}
+                                </span>
+
+                            </div>
+
+
+                            <a
+                                href="{{ member.get_absolute_url }}"
+                                class="about-team__member-link"
+                                aria-label="View {{ member.full_name }}'s profile"
+                            >
+                                <i class="bi bi-arrow-up-right"></i>
+                            </a>
+
+                        </div>
+
+
+                        {% if member.short_bio %}
+
+                            <p class="about-team__member-bio">
+                                {{ member.short_bio }}
+                            </p>
+
+                        {% endif %}
+
+
+                        <div class="about-team__member-socials">
+
+                            {% if member.linkedin_url %}
+
+                                <a
+                                    href="{{ member.linkedin_url }}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="{{ member.full_name }} on LinkedIn"
+                                >
+                                    <i class="bi bi-linkedin"></i>
+                                </a>
+
+                            {% endif %}
+
+
+                            {% if member.github_url %}
+
+                                <a
+                                    href="{{ member.github_url }}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="{{ member.full_name }} on GitHub"
+                                >
+                                    <i class="bi bi-github"></i>
+                                </a>
+
+                            {% endif %}
+
+
+                            {% if member.twitter_url %}
+
+                                <a
+                                    href="{{ member.twitter_url }}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="{{ member.full_name }} on X"
+                                >
+                                    <i class="bi bi-twitter-x"></i>
+                                </a>
+
+                            {% endif %}
+
+
+                            {% if member.website_url %}
+
+                                <a
+                                    href="{{ member.website_url }}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="{{ member.full_name }}'s website"
+                                >
+                                    <i class="bi bi-globe2"></i>
+                                </a>
+
+                            {% endif %}
+
+                        </div>
+
+                    </article>
+
+                {% empty %}
+
+                    <div class="about-team__empty">
+
+                        <span>09 / 08</span>
+
+                        <h3>
+                            The team is taking shape.
+                        </h3>
+
+                        <p>
+                            Our people will appear here as the Nine Eight
+                            team profile is built.
+                        </p>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

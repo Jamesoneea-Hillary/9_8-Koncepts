@@ -1,0 +1,142 @@
+<section class="article-hero">
+
+    <div class="article-hero-grid"></div>
+
+    <div class="article-hero-glow"></div>
+
+
+    <div class="container">
+
+        <div class="article-hero-content">
+
+            {% if post.category %}
+
+            <a
+                href="{% url 'blog:blog_list' %}?category={{ post.category.slug }}"
+                class="article-category"
+            >
+
+                {{ post.category.name }}
+
+            </a>
+
+            {% endif %}
+
+
+            <h1>
+
+                {{ post.title }}
+
+            </h1>
+
+
+            {% if post.excerpt %}
+
+            <p class="article-excerpt">
+
+                {{ post.excerpt }}
+
+            </p>
+
+            {% endif %}
+
+
+            <div class="article-meta">
+
+                <div class="article-author-mini">
+
+                    <div class="article-author-avatar">
+
+                        {% if post.author.profile_picture %}
+
+                            <img
+                                src="{{ post.author.profile_picture.url }}"
+                                alt=""
+                            >
+
+                        {% else %}
+
+                            {{ post.author.username|slice:":1"|upper }}
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Written by
+                        </span>
+
+                        <strong>
+                            {{ post.author.username|default:"Nine Eight Koncepts" }}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="meta-separator"></div>
+
+
+                <div class="article-date">
+
+                    <span>
+                        Published
+                    </span>
+
+                    <strong>
+
+                        {{ post.published_at|date:"F d, Y" }}
+
+                    </strong>
+
+                </div>
+
+
+                <div class="meta-separator"></div>
+
+
+                <div class="article-reading-time">
+
+                    <span>
+                        Reading time
+                    </span>
+
+                    <strong>
+                        5 min read
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+{% if post.featured_image %}
+
+<div class="article-cover">
+
+    <div class="container">
+
+        <div class="article-cover-wrapper">
+
+            <img
+                src="{{ post.featured_image.url }}"
+                alt="{{ post.title }}"
+            >
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endif %}

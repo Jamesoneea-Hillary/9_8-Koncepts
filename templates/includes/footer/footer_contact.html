@@ -1,0 +1,37 @@
+<div class="footer-contact">
+    <h4>
+        <i class="bi bi-chat-dots" aria-hidden="true"></i>
+        Contact
+    </h4>
+
+    {% if site_settings.email %}
+        <div class="contact-item">
+            <i class="bi bi-envelope" aria-hidden="true"></i>
+            <a href="mailto:{{ site_settings.email }}">{{ site_settings.email }}</a>
+        </div>
+    {% endif %}
+
+    {% if site_settings.phone %}
+        <div class="contact-item">
+            <i class="bi bi-telephone" aria-hidden="true"></i>
+            <a href="tel:{{ site_settings.phone|urlencode }}">{{ site_settings.phone }}</a>
+        </div>
+    {% endif %}
+
+    {% if site_settings.whatsapp_number %}
+        <div class="contact-item">
+            <i class="bi bi-whatsapp" aria-hidden="true"></i>
+            <a href="https://wa.me/{{ site_settings.whatsapp_number|cut:' '|cut:'+'|cut:'-'|cut:'('|cut:')' }}"
+               target="_blank" rel="noopener noreferrer">
+                WhatsApp
+            </a>
+        </div>
+    {% endif %}
+
+    {% if site_settings.address %}
+        <div class="contact-item">
+            <i class="bi bi-geo-alt" aria-hidden="true"></i>
+            <span>{{ site_settings.address }}</span>
+        </div>
+    {% endif %}
+</div>
